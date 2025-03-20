@@ -15,7 +15,7 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://brdk-github.github.io',
+  url: 'https://br-automation-com.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/X20-Edge-UseCases/',
@@ -23,8 +23,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'BRDK-GitHub', // Usually your GitHub org/user name.
-  projectName: 'X20-Edge', // Usually your repo name.
+  organizationName: 'br-automation-com', // Usually your GitHub org/user name.
+  projectName: 'X20-Edge-UseCases', // Usually your repo name.
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
@@ -73,7 +73,7 @@ const config = {
             label: 'Documentation',
           },
           {
-            href: 'https://brdk-github.github.io',
+            href: 'https://github.com/br-automation-com/X20-Edge-UseCases',
             label: 'GitHub',
             position: 'right',
           },

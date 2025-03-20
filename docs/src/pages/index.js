@@ -32,8 +32,8 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={`${siteConfig.title} Use Cases`}
+      description="A collection of use cases and tutorials for the X20 Edge">
       <HomepageHeader />
     </Layout>
   );
