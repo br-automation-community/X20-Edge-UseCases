@@ -4,6 +4,12 @@ sidebar_position: 8
 
 # 🚀 Deployment Workshop
 
+Note: This workshop was conducted using B&RDK Github, which can be cloned from:
+
+🔗 [GitHub Repository](https://github.com/BRDK-GitHub/X20Edge-SoftwareDeploymentServer)
+
+The latest commit on the main branch now contains the complete solution, so some steps in the guide below may no longer be necessary.
+
 ## 1. Setup Web and FTP Server
 
 ### Create an `.env` file
@@ -13,7 +19,7 @@ Create an `.env` file and fill it with the necessary information. Use `example.e
 In `docker-compose.yml`, set your environment variables using the syntax:
 
 ```yaml
-{ENVIRONMENT_VAR_NAME}
+{$ENVIRONMENT_VAR_NAME}
 ```
 
 Read through the `docker-compose.yml` file and try to understand each line. Consider the following questions:
