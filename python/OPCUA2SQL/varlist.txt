@@ -1,0 +1,4 @@
+# Variable name; database data type
+AsGlobalPV:Temperatur1;FLOAT
+AsGlobalPV:Temperatur2;FLOAT
+AsGlobalPV:Counter;INT

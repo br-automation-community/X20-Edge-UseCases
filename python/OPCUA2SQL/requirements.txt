@@ -1,0 +1,2 @@
+opcua
+mysql-connector-python
