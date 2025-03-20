@@ -1,6 +1,6 @@
-# 🔗 [OPC UA to SQL Data Logger](python/OPCUA2SQL)
+# 🔗 OPC UA to SQL Data Logger
 
-[This](python/OPCUA2SQL) script connects to an OPC UA server, reads variable values, and logs them into a MySQL database. The variable names and types are read from a `varlist.txt` file.
+[**This**](https://github.com/br-automation-com/X20-Edge-UseCases/tree/main/python/OPCUA2SQL) script connects to an OPC UA server, reads variable values, and logs them into a MySQL database. The variable names and types are read from a `varlist.txt` file.
 
 ## Prerequisites
 
