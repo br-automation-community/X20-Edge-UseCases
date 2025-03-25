@@ -11,21 +11,7 @@ Welcome to the X20 Edge! This guide will help you set up your device, log in for
 When you unbox your X20 Edge, you should find the following items:
 
 - X20 Edge Device
-- Power Adapter
-- Ethernet Cable
-- USB Cable
 - microSD Card (pre-installed)
-- Quick Start Guide
-
-## 🔧 Initial Setup
-
-Follow these steps to set up your X20 Edge for the first time:
-
-1. **Connect Power**: Plug the power adapter into the X20 Edge and then into a power outlet.
-
-2. **Connect Ethernet**: Use the provided Ethernet cable to connect the X20 Edge to your network.
-
-3. **Power On**: Press the power button to turn on the device. You should see the LED indicators light up.
 
 ## 🌐 Connecting to X20 Edge
 
