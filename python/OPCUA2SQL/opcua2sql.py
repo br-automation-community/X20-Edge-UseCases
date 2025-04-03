@@ -4,9 +4,9 @@ import os
 import mysql.connector
 
 # SQL Server URL
-SQL_SERVER = "192.168.30.128"
+SQL_SERVER = "192.168.1.1"
 # OPC UA Server URL
-OPC_UA_SERVER = "opc.tcp://192.168.30.108:4840"
+OPC_UA_SERVER = "opc.tcp://192.168.1.44:4840"
 # B&R Variable name space, use 'urn:B&R/pv/' for information model 1 and 'http://br-automation.com/OpcUa/PLC/PV/' for information model 2
 VAR_NAMESPACE = "urn:B&R/pv/"
 # Polling interval in seconds
@@ -33,9 +33,21 @@ with open(varlist_path, "r") as file:
 
 # Create a client and connect to the server
 client = Client(OPC_UA_SERVER)
+client_connected = False  # Custom flag to track connection status
+
+# Initialize db_connection to None
+db_connection = None  
+
 try:
-    client.connect()
-    print("Connected to the OPC UA Server")
+    # Attempt to connect to the OPC UA server
+    try:
+        client.connect()
+        client_connected = True  # Set the flag to True after successful connection
+        print("Connected to the OPC UA Server")
+    except Exception as e:
+        print(f"Error connecting to the OPC UA Server: {e}")
+        print(f"Make sure IP address {OPC_UA_SERVER} is reachable and the server is running.")
+        raise  # Re-raise the exception to exit the program if the connection fails
 
     # List all namespaces
     namespaces = client.get_namespace_array()
@@ -103,12 +115,18 @@ except Exception as e:
     print(e)
 
 finally:
-    # Disconnect from the server
-    client.disconnect()
-    print("Disconnected from the OPC UA Server")
+    if client_connected:  # Check the flag instead of is_connected()
+        try:
+            client.disconnect()
+            print("Disconnected from the OPC UA Server")
+        except Exception as e:
+            print(f"Error while disconnecting from OPC UA Server: {e}")
 
     # Close the database connection
-    if db_connection.is_connected():
-        cursor.close()
-        db_connection.close()
-        print("Disconnected from the MySQL database")
+    if db_connection is not None and db_connection.is_connected():
+        try:
+            cursor.close()
+            db_connection.close()
+            print("Disconnected from the MySQL database")
+        except Exception as e:
+            print(f"Error while disconnecting from MySQL database: {e}")
