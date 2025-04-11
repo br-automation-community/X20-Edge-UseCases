@@ -1,0 +1,278 @@
+[
+    {
+        "id": "ad841b68b39290d2",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d19f9f92e7ed7c30",
+        "type": "OpcUa-Client",
+        "z": "ad841b68b39290d2",
+        "endpoint": "e599ff1a86f3a785",
+        "action": "read",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": "1",
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "setstatusandtime": false,
+        "keepsessionalive": false,
+        "name": "",
+        "x": 600,
+        "y": 240,
+        "wires": [
+            [
+                "7ac1a8777b786aad",
+                "7ac35b51229fead1"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "e5af5675095ec3b5",
+        "type": "OpcUa-Item",
+        "z": "ad841b68b39290d2",
+        "item": "ns=6;s=::AsGlobalPV:Counter",
+        "datatype": "Int16",
+        "value": "",
+        "name": "PLC Counter",
+        "x": 310,
+        "y": 300,
+        "wires": [
+            [
+                "d19f9f92e7ed7c30"
+            ]
+        ]
+    },
+    {
+        "id": "5dcc51bdb61f580f",
+        "type": "inject",
+        "z": "ad841b68b39290d2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 120,
+        "wires": [
+            [
+                "e5af5675095ec3b5",
+                "f1f98914001f347e",
+                "b23dfe24f9660b59"
+            ]
+        ]
+    },
+    {
+        "id": "7ac1a8777b786aad",
+        "type": "debug",
+        "z": "ad841b68b39290d2",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "f1f98914001f347e",
+        "type": "OpcUa-Item",
+        "z": "ad841b68b39290d2",
+        "item": "ns=6;s=::AsGlobalPV:Temperatur2",
+        "datatype": "Float",
+        "value": "",
+        "name": "PLC Temperatur2",
+        "x": 330,
+        "y": 240,
+        "wires": [
+            [
+                "d19f9f92e7ed7c30"
+            ]
+        ]
+    },
+    {
+        "id": "b23dfe24f9660b59",
+        "type": "OpcUa-Item",
+        "z": "ad841b68b39290d2",
+        "item": "ns=6;s=::AsGlobalPV:Temperatur1",
+        "datatype": "Float",
+        "value": "",
+        "name": "PLC Temperatur1",
+        "x": 330,
+        "y": 180,
+        "wires": [
+            [
+                "d19f9f92e7ed7c30"
+            ]
+        ]
+    },
+    {
+        "id": "33b85ac28e79bfcc",
+        "type": "function",
+        "z": "ad841b68b39290d2",
+        "name": "function 1",
+        "func": "// Extract values by referencing the keys directly\nconst counter = msg.payload[\"ns=6;s=::AsGlobalPV:Counter\"];\nconst temperatur2 = msg.payload[\"ns=6;s=::AsGlobalPV:Temperatur2\"];\nconst temperatur1 = msg.payload[\"ns=6;s=::AsGlobalPV:Temperatur1\"];\n\nmsg.topic = `\n  INSERT INTO PLC1 (AsGlobalPV_Counter, AsGlobalPV_Temperatur2, AsGlobalPV_Temperatur1)\n  VALUES (${counter}, ${temperatur2}, ${temperatur1});\n`;\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1060,
+        "y": 400,
+        "wires": [
+            [
+                "cae182ac636335a6",
+                "5f3515f122a06002"
+            ]
+        ]
+    },
+    {
+        "id": "7ac35b51229fead1",
+        "type": "join",
+        "z": "ad841b68b39290d2",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "useparts": false,
+        "accumulate": false,
+        "timeout": "1",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 810,
+        "y": 360,
+        "wires": [
+            [
+                "b0f19a990e09b7ac",
+                "33b85ac28e79bfcc"
+            ]
+        ]
+    },
+    {
+        "id": "b0f19a990e09b7ac",
+        "type": "debug",
+        "z": "ad841b68b39290d2",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "cae182ac636335a6",
+        "type": "mysql",
+        "z": "ad841b68b39290d2",
+        "mydb": "7301930d8ff61b2c",
+        "name": "",
+        "x": 1230,
+        "y": 400,
+        "wires": [
+            [
+                "156af2bd5a25dcb2"
+            ]
+        ]
+    },
+    {
+        "id": "5f3515f122a06002",
+        "type": "debug",
+        "z": "ad841b68b39290d2",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1160,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "156af2bd5a25dcb2",
+        "type": "debug",
+        "z": "ad841b68b39290d2",
+        "name": "debug 4",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1360,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "e599ff1a86f3a785",
+        "type": "OpcUa-Endpoint",
+        "endpoint": "opc.tcp://192.168.1.44:4840",
+        "secpol": "None",
+        "secmode": "None",
+        "none": true,
+        "login": false,
+        "usercert": false,
+        "usercertificate": "",
+        "userprivatekey": ""
+    },
+    {
+        "id": "7301930d8ff61b2c",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "192.168.1.1",
+        "port": "3306",
+        "db": "data",
+        "tz": "",
+        "charset": "UTF8"
+    }
+]
