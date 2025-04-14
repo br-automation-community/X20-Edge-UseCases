@@ -2,6 +2,12 @@
 sidebar_position: 3
 ---
 
+This guide shows how to use RUC but a lot of open source posibilities exist for example:
+
+HDD Raw Copy Tool   (Clone & Write)
+Rofus               (Write only)
+Balena Etcher       (Write only)
+
 # 🛠️ Cloning/burning new image
 
 When you have an image on a X20 edge device that you now want to clone onto other X20 edge devices the easiest solution is to use Runtime Utility Center that comes installed with Automation Studio.
