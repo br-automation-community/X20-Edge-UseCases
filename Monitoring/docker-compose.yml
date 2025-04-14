@@ -66,6 +66,7 @@ services:
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
     container_name: cadvisor
+    restart: unless-stopped
     expose:
       - "8080"
     volumes:
