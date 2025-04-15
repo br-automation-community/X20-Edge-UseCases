@@ -6,10 +6,11 @@ This guide explains how to configure **Grafana** to visualize data from your mon
 - Import dashboards from **Grafana Labs**
 - Import a **custom SD card monitoring dashboard** from JSON
 
-> ✅ Grafana may run **outside** this stack, but must have access Prometheus via `http://<host>:9090`.  
-<img src="./img/monitoring-08.png" alt="Prometheus datasource" width="500">
-<img src="./img/monitoring-05.png" alt="Prometheus datasource" width="500">
-<img src="./img/monitoring-07.png" alt="Prometheus datasource" width="500">
+> ✅ Grafana may run **outside** this stack, but must have access Prometheus via `http://<host>:9090`.
+
+![Prometheus datasource](./img/monitoring-08.png)  
+![Prometheus datasource](./img/monitoring-05.png)  
+![Prometheus datasource](./img/monitoring-07.png)  
   
 ---
 
@@ -31,7 +32,7 @@ http://<your-docker-host>:9090
 ```
 
 6. Click **Save & Test**  
-<img src="./img/monitoring-03.png" alt="Prometheus datasource" width="500">
+![Prometheus datasource](./img/monitoring-03.png")
 ---
 
 ## 📥 2. Import Dashboards from Grafana Labs
@@ -44,8 +45,8 @@ http://<your-docker-host>:9090
 4. Choose your Prometheus datasource
 5. Click **Import**  
   
-<img src="./img/monitoring-01.png" alt="Prometheus datasource" width="800">  
-<img src="./img/monitoring-02.png" alt="Prometheus datasource" width="250">  
+![Prometheus datasource](./img/monitoring-01.png")  
+![Prometheus datasource](./img/monitoring-02.png")  
 
 ### Recommended Dashboard IDs:
 
@@ -63,7 +64,7 @@ http://<your-docker-host>:9090
 ## 📁 3. Import SD Card Monitoring Dashboard (from JSON)
 
 You can use the included `grafana-dashboard.json` file to visualize metrics from the `sdcard-exporter`.  
-<img src="./img/monitoring-04.png" alt="Prometheus datasource" width="500">
+![Prometheus datasource](./img/monitoring-04.png")  
 
 ### To Import:
 
