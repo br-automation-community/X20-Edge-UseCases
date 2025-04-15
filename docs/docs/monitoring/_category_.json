@@ -2,6 +2,7 @@
   "label": "📈 Monitoring",
   "position": 7,
   "link": {
-    "type": "monitoring/index"
+    "type": "doc",
+    "id": "monitoring/index"
   }
 }
