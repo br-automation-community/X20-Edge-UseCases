@@ -65,7 +65,7 @@ http://<your-docker-host>:9090
 ## 📁 3. Import SD Card Monitoring Dashboard (from JSON)
 
 You can use the included `grafana-dashboard.json` file to visualize metrics from the `sdcard-exporter`.  
-![Prometheus datasource](./img/monitoring-04.png")
+![Prometheus datasource](./img/monitoring-04.png)
 
 ### To Import:
 
