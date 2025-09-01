@@ -1,6 +1,6 @@
 # Website
 
-You can access the documentation page [here](https://br-automation-com.github.io/X20-Edge-UseCases/).
+You can access the documentation page [here](https://br-automation-community.github.io/X20-Edge-UseCases/).
 
 This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
